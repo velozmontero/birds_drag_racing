@@ -1,0 +1,46 @@
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sky {
+  background: url('../images/sky.jpg') repeat-x;
+  position: absolute;
+  width: 2000px;
+  height: 100%;
+  animation: clouds 4s linear infinite;
+}
+
+.bird {
+  background: url('../images/birds.png') no-repeat;
+  position: absolute;
+  width: 144px;
+  height: 72px;
+  margin: 0 auto;
+  top: 50%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  animation: bird 300ms steps(4) infinite alternate;
+  z-index: 99;
+}
+
+@keyframes clouds {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -2000px 0;
+  }
+}
+
+@keyframes bird {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 -288px;
+  }
+}
