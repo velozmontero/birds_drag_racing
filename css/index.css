@@ -5,6 +5,15 @@ body {
   overflow: hidden;
 }
 
+.reset-btn {
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.reset-btn:hover {
+  color: rgb(67, 68, 68);
+}
+
 .sky {
   background: url('../images/sky.jpg') repeat-x;
   position: absolute;
@@ -27,9 +36,19 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   font-size: 200px;
   font-family: Arial, Helvetica, sans-serif;
   z-index: 100;
+  text-transform: uppercase;
+}
+
+.joke {
+  font-size: 50px;
+  margin-bottom: 40px;
+  width: 800px;
+  word-wrap: break-word;
+  text-align: center;
 }
 
 .timer {

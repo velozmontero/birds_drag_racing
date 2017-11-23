@@ -3,31 +3,68 @@ $(document).ready(function(){
   var time = 0;
   var result = null;
 
-  var timer = setInterval(function () {
-    
-    if (count >= 1000 && count < 2000) {
-      $('.rsg').html('READY');
-    }
-    else if (count >= 2000 && count < 3000) {
-      $('.rsg').html('SET');
-    }
-    else if (count >= 3000 && count < 4000) {
-      $('.rsg').html('GO!');
-    }
-    else {
-      $('.rsg').html('');
-    }
+  var timer;
 
-    if(count >= 3000) {
-      time+=100;
-      $('.timer').html(time / 1000);
-    }
+  var jokes = [
+    "You 're so slow, you will cross the finish line in a pine box",
+    "You 're so slow, they measure your 40 yd dash with a calendar",
+    "You 're so slow, you came in 2nd in a 1 man race",
+    "You 're so slow, you have to chase the zombies",
+    "You 're slower than the last 10 minutes of the last day of school",
+    "You 're slower than a week in jail",
+    "You 're slower than a slug on Valium",
+  ]
 
-    count+=100;
-  }, 100);
+  function initialize(){
+    timer = setInterval(function () {
 
-  function stopTimer() {
+      if (count >= 1000 && count < 2000) {
+        $('.rsg').html('READY');
+      } else if (count >= 2000 && count < 3000) {
+        $('.rsg').html('SET');
+      } else if (count >= 3000 && count < 4000) {
+        $('.rsg').html('GO!');
+      } else {
+        $('.rsg').html('');
+      }
+
+      if (time >= 15000 && !result) {
+        result = 'lost';
+
+        console.log('lost joke');
+
+        stop();
+        showResult(jokes[Math.floor(Math.random() * 7)], 'joke');
+      }
+
+      if (count >= 3000) {
+        time += 100;
+        $('.timer').html(time / 1000);
+      }
+
+      count += 100;
+    }, 100);
+  }
+  
+  function stop() {
     clearInterval(timer);
+  }
+
+  function reset() {
+    count = 0;
+    time = 0;
+    result = null;
+
+    console.log('reseting');
+
+    $('.result').addClass('hide').html('');
+    $('.bird').css({
+      'top': '50%',
+      'left': 0
+    });
+    $('.timer').html(0);
+
+    initialize();
   }
 
   $(window).keydown(function (e) {
@@ -38,16 +75,14 @@ $(document).ready(function(){
     if(count > 3000){
       if (position.left + 20 > target.left) {
         if (time >= 10000 && !result) {
-          console.log('time ',time);
-
           result = 'lost';
-          stopTimer();
-          $('.result').removeClass('hide').html('YOU LOSE!');
+          stop();
+          showResult('YOU LOSE!');
         }
         if (time < 10000 && !result) {
           result = 'won';
-          stopTimer();
-          $('.result').removeClass('hide').html('YOU WIN!');
+          stop();
+          showResult('YOU WIN!');
         }
       }
 
@@ -81,5 +116,16 @@ $(document).ready(function(){
     // console.log('position ', position);
 
   });
+
+  function showResult(msg, className) {
+    $('.result').removeClass('hide').html(`
+            <div class=${className || ''}>${msg}</div>
+            <div class="reset-btn">RESTART</div>
+          `).promise().done(function () {
+      $('.reset-btn').click(reset);
+    });
+  }
+
+  initialize();
 
 });
