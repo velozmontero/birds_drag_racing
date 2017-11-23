@@ -6,13 +6,13 @@ $(document).ready(function(){
   var timer;
 
   var jokes = [
-    "You 're so slow, you will cross the finish line in a pine box",
-    "You 're so slow, they measure your 40 yd dash with a calendar",
+    "You 're so slow, your bird grew a beard while racing... go look..., GOTCHA!!! didn't I?",
+    "You 're so slow, we had to measure your 10 second race with a calendar",
     "You 're so slow, you came in 2nd in a 1 man race",
     "You 're so slow, you have to chase the zombies",
-    "You 're slower than the last 10 minutes of the last day of school",
-    "You 're slower than a week in jail",
-    "You 're slower than a slug on Valium",
+    "You 're slower than a slow cooker",
+    "You 're slower than a 1 legged dog on tranquilizers",
+    "You 're slower than Daenerys Targaryen on her way to Westeros",
   ]
 
   function initialize(){
@@ -28,7 +28,7 @@ $(document).ready(function(){
         $('.rsg').html('');
       }
 
-      if (time >= 15000 && !result) {
+      if (time >= 13000 && !result) {
         result = 'lost';
 
         console.log('lost joke');
