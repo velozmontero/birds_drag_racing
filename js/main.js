@@ -1,29 +1,30 @@
 $(document).ready(function(){
-  var count = 3;
+  var count = 0;
   var time = 0;
   var result = null;
 
   var timer = setInterval(function () {
-    if(count === 3){
+    
+    if (count >= 1000 && count < 2000) {
       $('.rsg').html('READY');
-      count--;
     }
-    else if (count === 2) {
+    else if (count >= 2000 && count < 3000) {
       $('.rsg').html('SET');
-      count--;
     }
-    else if (count === 1) {
+    else if (count >= 3000 && count < 4000) {
       $('.rsg').html('GO!');
-      count--;
     }
     else {
       $('.rsg').html('');
     }
 
-    if(count < 1) {
-      $('.timer').html(++time);
+    if(count >= 3000) {
+      time+=100;
+      $('.timer').html(time / 1000);
     }
-  }, 1000);
+
+    count+=100;
+  }, 100);
 
   function stopTimer() {
     clearInterval(timer);
@@ -34,14 +35,16 @@ $(document).ready(function(){
     let target = $('.crossing-line').offset();
 
     // console.log(position);
-    if(count < 1){
+    if(count > 3000){
       if (position.left + 20 > target.left) {
-        if (time >= 10 && !result) {
+        if (time >= 10000 && !result) {
+          console.log('time ',time);
+
           result = 'lost';
           stopTimer();
           $('.result').removeClass('hide').html('YOU LOSE!');
         }
-        if (time < 10 && !result) {
+        if (time < 10000 && !result) {
           result = 'won';
           stopTimer();
           $('.result').removeClass('hide').html('YOU WIN!');
