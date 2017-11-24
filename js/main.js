@@ -6,13 +6,16 @@ $(document).ready(function(){
   var timer;
 
   var jokes = [
-    "You 're so slow, your bird grew a beard while racing... go look..., GOTCHA!!! didn't I?",
-    "You 're so slow, we had to measure your 10 second race with a calendar",
-    "You 're so slow, you came in 2nd in a 1 man race",
-    "You 're so slow, you have to chase the zombies",
-    "You 're slower than a slow cooker",
-    "You 're slower than a 1 legged dog on tranquilizers",
-    "You 're slower than Daenerys Targaryen on her way to Westeros",
+    "You're so slow, the bird grew a beard while racing... go look..., GOTCHA!!! didn't I?",
+    "You're so slow, we had to measure your 10 second race with a calendar",
+    "You're so slow, you came in 2nd in a 1 man race",
+    "You're so slow, you have to chase the zombies",
+    "You're slower than a slow cooker",
+    "You're slower than a 1 legged dog on tranquilizers",
+    "You're slower than Daenerys Targaryen on her way to Westeros",
+    "You gotta get those fingers to the gym asap my nigga! You too slow!",
+    "You've got some supreme slownest in those fingers son! You gotta do some finger cardio!",
+    "You've got limitted edition slow fingers! go claim your Ginnes record!",
   ]
 
   function initialize(){
@@ -34,7 +37,7 @@ $(document).ready(function(){
         console.log('lost joke');
 
         stop();
-        showResult(jokes[Math.floor(Math.random() * 7)], 'joke');
+        showResult(jokes[Math.floor(Math.random() * 11)], 'joke');
       }
 
       if (count >= 3000) {
