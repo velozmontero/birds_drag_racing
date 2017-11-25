@@ -37,7 +37,7 @@ $(document).ready(function(){
         console.log('lost joke');
 
         stop();
-        showResult(jokes[Math.floor(Math.random() * 11)], 'joke');
+        showResult(jokes[Math.floor(Math.random() * 10)], 'joke');
       }
 
       if (count >= 3000) {
